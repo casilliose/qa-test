@@ -1,0 +1,33 @@
+.title {
+	font-size: 16px;
+}
+
+.form-reg {
+	padding: 20px;
+	border: 1px solid gray;
+	border-radius: 2px;
+	width: 350px;
+	margin: 200px auto;
+}
+
+.error-double {
+	color: red;
+}
+
+.item {
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	width: 400px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.history-block {
+	border: 1px solid gray;
+	border-radius: 5px;
+	padding: 10px;
+	width: 400px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
