@@ -1,0 +1,23 @@
+{
+  "name": "myfin/qa-test",
+  "license": "MIT",
+  "require": {
+    "symfony/http-foundation": "5.3.*",
+    "phroute/phroute": "^2.1",
+    "phpmailer/phpmailer": "^6.7.1",
+    "ext-pdo": "*",
+    "ext-mysqli": "*"
+  },
+  "autoload": {
+    "psr-4": {"App\\": "/app"}
+  },
+  "config": {
+    "secure-http": false,
+    "archive-format": "zip",
+    "preferred-install": "dist",
+    "sort-packages": false,
+    "checksum": false
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
