@@ -20,7 +20,7 @@ try {
     if ($config['prod'] == true) {
         $subDomain = explode('.', $_SERVER['HTTP_HOST']);
         $configSandBox = require __DIR__ . '/config_sandbox.php';
-        if (count($subDomain)) {
+        if (count($subDomain) >= 3) {
             $check = $subDomain[0];
             if (isset($configSandBox[$check])) {
                 $config['db'] = $configSandBox[$check]['db'];
@@ -32,13 +32,15 @@ try {
                 echo "You need access";
                 die();
             }
+            $access = $configSandBox[$check]['access'];
+            $host = $configSandBox[$check]['domain'];
+            $_SERVER['REQUEST_URI'] = str_replace('?token='.$configSandBox[$check]['access'], '', $_SERVER['REQUEST_URI']);
         } else if($_GET['token'] !== $configSandBox["root_access"]) {
             echo "You can use also subdomain";
             die();
+        } else {
+            $_SERVER['REQUEST_URI'] = str_replace('?token='.$configSandBox["root_access"], '', $_SERVER['REQUEST_URI']);
         }
-        $_SERVER['REQUEST_URI'] = str_replace('?token='.$configSandBox[$check]['access'], '', $_SERVER['REQUEST_URI']);
-        $access = $configSandBox[$check]['access'];
-        $host = $configSandBox[$check]['domain'];
     }
 
     $request = Request::createFromGlobals();
