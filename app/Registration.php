@@ -56,7 +56,7 @@ class Registration {
         return $stmt->errorCode() === "00000";
     }
 
-    public function sendApproveEmail(string $email): bool
+    public function sendApproveEmail(string $email, string $ac, string $host): bool
     {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
         $password = substr(str_shuffle($permitted_chars), 0, 10);
@@ -82,7 +82,7 @@ class Registration {
                 $mail->setFrom("myfintest@mail.ru", 'MyFinTest');
                 $eb = base64_encode($email);
                 $mail->addAddress($email);
-                $link = "http://localhost:9100/password-create/$password/$eb/";
+                $link = 'http://'.$host."/password-create/$password/$eb/".$ac;
                 $mail->Subject = 'MyFinTest подтверждение email при регистрации';
                 $mail->Body    = "Ссылка на подтверждение email $link";
                 return $mail->send();

@@ -1,6 +1,6 @@
 <link href="/main.css" rel="stylesheet">
-<form action="" method="post" class="form-reg" name="reg">
-    <p class="title">Регистрация <a href="/">Авторизация</a></p>
+<form action="/registration/<?php echo !empty($access) ? "?token=".$access : "";?>" method="post" class="form-reg" name="reg">
+    <p class="title">Регистрация <a href="/<?php echo !empty($access) ? "?token=".$access : "";?>">Авторизация</a></p>
     <input type="text" required placeholder="Введите имя" value="" name="name" /><br/><br/>
     <input type="text" required placeholder="Введите фамилия" value="" name="lastname" /><br/><br/>
     <input type="email" required placeholder="Введите email" value="" name="email" /><br/><br/>
