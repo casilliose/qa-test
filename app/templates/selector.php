@@ -8,9 +8,9 @@
           event.stopImmediatePropagation();
           event.preventDefault();
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', '/del-all-users/', false);
+          xhr.open('GET', '/del-all-users/<?php echo !empty($access) ? "?token=".$access : "";?>', false);
           xhr.send();
-          window.location.href = "http://localhost:9100";
+          window.location.href = "/<?php echo !empty($access) ? "?token=".$access : "";?>";
           return false;
         }
       }
@@ -18,15 +18,15 @@
       {
         if(confirm("Подать заявку на кредит ?")) {
           var xhr = new XMLHttpRequest();
-          xhr.open('GET', '/add-offer/'+id+"/", false);
+          xhr.open('GET', '/add-offer/'+id+"/<?php echo !empty($access) ? "?token=".$access : "";?>", false);
           xhr.send();
           alert("Ваша заявка принята");
         }
       }
     </script>
-    <a href="/selector/">Заявка на кредит</a>
-    <a href="/credit-history/">История заявок</a>
-    <a href="/logout/" onclick="logout(event);">Выход</a>
+    <a href="/selector/<?php echo !empty($access) ? "?token=".$access : "";?>">Заявка на кредит</a>
+    <a href="/credit-history/<?php echo !empty($access) ? "?token=".$access : "";?>">История заявок</a>
+    <a href="/logout/<?php echo !empty($access) ? "?token=".$access : "";?>" onclick="logout(event);">Выход</a>
 </section>
 <?php if (!empty($select)):?>
     <?php
@@ -79,11 +79,16 @@
                 <?php
             }
         } else {
-            echo "Поиск не дал результатов, подберите другой <a href='http://localhost:9100/selector/'>Подобрать</a>";
+            if(!empty($access)) {
+
+                 echo "Поиск не дал результатов, подберите другой <a href='/selector/?token=$access'>Подобрать</a>";
+            } else {
+                echo "Поиск не дал результатов, подберите другой <a href='/selector/'>Подобрать</a>";
+            }
         }
     ?>
 <?php else:?>
-<form action="/selector-result/" method="post" class="form-reg">
+<form action="/selector-result/<?php echo !empty($access) ? "?token=".$access : "";?>" method="post" class="form-reg">
     <p class="title">Подбор кредита</p>
     <input type="number" required placeholder="Сумма кредита" value="" name="amount" /><br/><br/>
     <input type="number" required placeholder="Срок кредита" value="" name="term" /><br/><br/>

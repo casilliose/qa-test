@@ -1,7 +1,7 @@
 <link href="/main.css" rel="stylesheet">
 <section>
-    <a href="/selector/">Заявка на кредит</a>
-    <a href="/credit-history/">История заявок</a>
+    <a href="/selector/<?php echo !empty($access) ? "?token=".$access : "";?>">Заявка на кредит</a>
+    <a href="/credit-history/<?php echo !empty($access) ? "?token=".$access : "";?>">История заявок</a>
 </section>
 <?php if (!empty($result)):?>
     <?php
