@@ -71,15 +71,15 @@ class Registration {
                 //Server settings
                 $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
                 $mail->isSMTP();                                            //Send using SMTP
-                $mail->Host       = 'smtp.mail.ru';                     //Set the SMTP server to send through
+                $mail->Host       = 'smtp.yandex.ru';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'myfintest@mail.ru';                     //SMTP username
-                $mail->Password   = '0AXZNVnFBWf37mdj3ZkV';                               //SMTP password
+                $mail->Username   = 'mail@bankiros.ru';                     //SMTP username
+                $mail->Password   = 'zxyfgmqgakpuxxfz';                               //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                 //Recipients
-                $mail->setFrom("myfintest@mail.ru", 'MyFinTest');
+                $mail->setFrom("mail@bankiros.ru", 'MyFinTest');
                 $eb = base64_encode($email);
                 $mail->addAddress($email);
                 $link = 'http://'.$host."/password-create/$password/$eb/".$ac;
